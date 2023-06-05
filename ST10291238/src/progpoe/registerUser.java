@@ -10,30 +10,69 @@ import java.util.Scanner;
  *
  * @author joshn
  */
-public class registerUser extends ProgPOE {
+public class registerUser {
 
-    private static void registerUser(Scanner scanner) {
-        System.out.print("\nEnter username: ");
-        String username = scanner.next();
+    private User user;
 
+    public registerUser() {
+        Scanner sc = new Scanner(System.in);
+
+        user = new User("", "");
+
+            System.out.print("\nEnter username: ");
+            String username = sc.next();
+            user.setUsername(username);
+            
+             if (username.length() > 5 || !username.contains("_")) {
+        System.out.println("Invalid username. Username must be no more than 5 characters long and contain an underscore.");
+        return;
+    }
         // Check if username already exists
-        if (registeredUsers.containsKey(username)) {
-            System.out.println("Username already exists. Please choose a different username.");
-            return;
-        }
-
+//        if (registeredUsers.containsKey(username)) {
+//            System.out.println("Username already exists. Please choose a different username.");
+//            return;
+//        }
         System.out.print("Enter password: ");
-        String password = scanner.next();
+        String password = sc.next();
+        user.setPassword(password);
 
+        boolean containsUppercase = false;
+        boolean containsNumber = false;
+        boolean containsSpecialCharacter = false;
+
+        for (int i = 0; i < password.length(); i++) {
+            char c = password.charAt(i);
+
+            if (Character.isUpperCase(c)) {
+                containsUppercase = true;
+            } else if (Character.isDigit(c)) {
+                containsNumber = true;
+            } else if ("!@#$%^&*()_+-=[]{}|;':<>,.?/".indexOf(c) != -1) {
+                containsSpecialCharacter = true;
+            }
+        }
+        
+        if (password.length() < 8 || !containsUppercase || !containsNumber || !containsSpecialCharacter) {
+        System.out.println("Invalid password. Password must be at least 8 characters long, contain an uppercase letter, a number, and a special character.");
+        return;
+    }
+        
         System.out.print("Enter first name: ");
-        String firstName = scanner.next();
+        String firstName = sc.next();
+        user.setFirstName(firstName);
 
+        
         System.out.print("Enter surname: ");
-        String surname = scanner.next();
-
-        // Add the new user to the registered users HashMap
-        registeredUsers.put(username, password);
+        String surname = sc.next();
+        user.setSurname(surname);
 
         System.out.println("\nRegistration successful!");
+
     }
+        public User getUser() {
+            return user;
+         }
+
+  
+
 }

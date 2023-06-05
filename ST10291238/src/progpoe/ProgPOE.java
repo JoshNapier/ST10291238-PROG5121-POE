@@ -4,7 +4,7 @@
  */
 package progpoe;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -16,7 +16,7 @@ public class ProgPOE {
     /**
      * @param args the command line arguments
      */
-    private static HashMap<String, String> registeredUsers = new HashMap<String, String>();
+    public static ArrayList<User> users = new ArrayList<User>();
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -31,10 +31,11 @@ public class ProgPOE {
 
             switch (choice) {
                 case 1:
-                    registerUser(scanner);
+                    registerUser register = new registerUser();
+                    users.add(register.getUser());
                     break;
                 case 2:
-                    loginUser(scanner);
+                    loginUser login = new loginUser(users);
                     break;
                 case 3:
                     System.out.println("Goodbye!");

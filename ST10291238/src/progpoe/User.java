@@ -11,23 +11,19 @@ import java.util.Objects;
  * @author joshn
  */
 public class User {
+
     private String firstName;
     private String surname;
     private String username;
     private String password;
-    
-    public User() {
-        
-    }
-    
-    
+
     public User(String firstName, String surname, String username, String password) {
         this.firstName = firstName;
         this.surname = surname;
         this.username = username;
         this.password = password;
     }
-    
+
     public User(String username, String password) {
         this.username = username;
         this.password = password;
@@ -92,6 +88,5 @@ public class User {
         }
         return Objects.equals(this.password, other.password);
     }
-    
-    
+
 }
