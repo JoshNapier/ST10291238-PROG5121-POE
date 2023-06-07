@@ -27,11 +27,7 @@ public class registerUser {
         System.out.println("Invalid username. Username must be no more than 5 characters long and contain an underscore.");
         return;
     }
-        // Check if username already exists
-//        if (registeredUsers.containsKey(username)) {
-//            System.out.println("Username already exists. Please choose a different username.");
-//            return;
-//        }
+
         System.out.print("Enter password: ");
         String password = sc.next();
         user.setPassword(password);

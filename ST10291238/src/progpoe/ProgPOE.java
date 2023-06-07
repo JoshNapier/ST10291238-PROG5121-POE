@@ -36,6 +36,7 @@ public class ProgPOE {
                     break;
                 case 2:
                     loginUser login = new loginUser(users);
+                    TaskMenu menu = new TaskMenu();
                     break;
                 case 3:
                     System.out.println("Goodbye!");
@@ -49,3 +50,4 @@ public class ProgPOE {
     }
 
 }
+//------------------------- END OF FILE --------------------------------------//
