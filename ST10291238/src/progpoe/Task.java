@@ -9,16 +9,21 @@ package progpoe;
  * @author joshn
  */
 public class Task {
+
     public String taskName;
     public int taskNum;
     public String taskDescr;
+    public double taskDuration;
     public String taskID;
     public String taskStatus;
-    
-    public Task (String taskName, int taskNum, String taskDescr, String taskID, String taskStatus) {
+    public static int taskAmount = 0;
+
+    public Task(String taskName, String taskDescr, double taskDuration, String taskID, String taskStatus) {
+        taskAmount++;
         this.taskName = taskName;
-        this.taskNum = taskNum;
+        this.taskNum = taskAmount;
         this.taskDescr = taskDescr;
+        this.taskDuration = taskDuration;
         this.taskID = taskID;
         this.taskStatus = taskStatus;
     }
@@ -35,16 +40,20 @@ public class Task {
         return taskNum;
     }
 
-    public void setTaskNum(int taskNum) {
-        this.taskNum = taskNum;
-    }
-
     public String getTaskDescr() {
         return taskDescr;
     }
 
     public void setTaskDescr(String taskDescr) {
         this.taskDescr = taskDescr;
+    }
+
+    public double getTaskDuration() {
+        return taskDuration;
+    }
+
+    public void setTaskDuration(double taskDuration) {
+        this.taskDuration = taskDuration;
     }
 
     public String getTaskID() {
@@ -62,8 +71,6 @@ public class Task {
     public void setTaskStatus(String taskStatus) {
         this.taskStatus = taskStatus;
     }
-    
-    
-    
+
 }
 //------------------------ END OF CLASS --------------------------------------//

@@ -14,6 +14,11 @@ import java.util.Scanner;
 public class loginUser {
 
     private User user;
+    private boolean validLogin = false;
+    
+    public boolean isValidLogin() {
+        return this.validLogin;
+    }
 
     public loginUser(ArrayList<User> users) {
         Scanner scanner = new Scanner(System.in);
@@ -31,14 +36,25 @@ public class loginUser {
         }
         user = users.get(users.indexOf(user));
 
-        // linear search
+        // Check validity of login
         boolean found = false;
         for (int i = 0; i < users.size() && !found; i++) {
             User current = users.get(i);
-            if (current.getUsername().equals(user.getUsername()) && current.getPassword().equals(user.getPassword()));
+            this.validLogin = current.getUsername().equals(user.getUsername()) && current.getPassword().equals(user.getPassword());
+            if (validLogin){
+                this.user = current;
+                System.out.println("\nLogin successful!");
+            }
+            else{
+                found = true;
+                System.out.println("Login failed");
+                return;
+            }
         }
-
-        System.out.println("Welcome " + user.getFirstName() + " " + user.getSurname() + ", it is great to see you again.");
+        if(validLogin) {
+            System.out.println("Welcome " + user.getFirstName() + " " + user.getSurname() + ", it is great to see you again.");
+        }
+       
     }
 
     public User getUser() {
@@ -46,3 +62,4 @@ public class loginUser {
     }
 
 }
+//----------------------- END OF CLASS ---------------------------------------//

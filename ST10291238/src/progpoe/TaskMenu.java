@@ -13,35 +13,42 @@ import java.util.Scanner;
  */
 public class TaskMenu {
 
-    public static ArrayList<String> tasks = new ArrayList<>();
+    public static ArrayList<Task> tasks = new ArrayList<>();
+    public static void menu(User user) {
+        Scanner scanner = new Scanner(System.in);
+        boolean quitFlag = false;
 
-    Scanner scanner = new Scanner(System.in);
+        while(true) {
+            System.out.println("Welcome to EasyKanban");
+            System.out.println("\nWhat would you like to do? (Enter the corresponding number)");
+            System.out.println("1. Add tasks");
+            System.out.println("2. Show report");
+            System.out.println("3. Quit");
 
-    
-        while (true) {
-        System.out.println("Welcome to EasyKanban");
-        System.out.println("\nWhat would you like to do? (Enter the corresponding number)");
-        System.out.println("1. Add tasks");
-        System.out.println("2. Show report");
-        System.out.println("3. Quit");
+            int choice = scanner.nextInt();
 
-        int choice = scanner.nextInt();
-
-        switch (choice) {
-            case 1:
-                AddTask task = new AddTask(Task);
-                break;
-            case 2:
-                System.out.println("Coming soon!");
-                break;
-            case 3:
-                System.out.println("Logging out...");
-                scanner.close();
-                break;
-            default:
-                System.out.println("Invalid choice.");
-                break;
+            switch (choice) {
+                case 1:
+                    AddTask task = new AddTask(tasks, user);
+                    break;
+                case 2:
+                    System.out.println("Coming soon!");
+                    break;
+                case 3:
+                    System.out.println("Logging out...");
+                    scanner.close();
+                    quitFlag = true;
+                    break;
+                default:
+                    System.out.println("Invalid choice.");
+                    break;
+            }
+            if(quitFlag) break;
         }
-
     }
+    
+    
+    
+    
+}
 //--------------------------- END OF CLASS -----------------------------------//
