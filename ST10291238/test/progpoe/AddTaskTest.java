@@ -19,22 +19,6 @@ public class AddTaskTest {
     
     public AddTaskTest() {
     }
-
-    @org.junit.jupiter.api.BeforeAll
-    public static void setUpClass() throws Exception {
-    }
-
-    @org.junit.jupiter.api.AfterAll
-    public static void tearDownClass() throws Exception {
-    }
-
-    @org.junit.jupiter.api.BeforeEach
-    public void setUp() throws Exception {
-    }
-
-    @org.junit.jupiter.api.AfterEach
-    public void tearDown() throws Exception {
-    }
     
     @BeforeAll
     public static void setUpClass() {
@@ -52,7 +36,7 @@ public class AddTaskTest {
     public void tearDown() {
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     public void testSomeMethod() {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");

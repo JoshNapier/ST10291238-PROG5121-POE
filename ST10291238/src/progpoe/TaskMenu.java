@@ -28,20 +28,15 @@ public class TaskMenu {
             int choice = scanner.nextInt();
 
             switch (choice) {
-                case 1:
+                case 1 -> {
                     AddTask task = new AddTask(tasks, user);
-                    break;
-                case 2:
-                    System.out.println("Coming soon!");
-                    break;
-                case 3:
+                }
+                case 2 -> System.out.println("Coming soon!");
+                case 3 -> {
                     System.out.println("Logging out...");
                     scanner.close();
-                    quitFlag = true;
-                    break;
-                default:
-                    System.out.println("Invalid choice.");
-                    break;
+                }
+                default -> System.out.println("Invalid choice.");
             }
             if(quitFlag) break;
         }

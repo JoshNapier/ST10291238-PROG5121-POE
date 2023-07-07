@@ -10,9 +10,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+
 /**
  *
  * @author joshn
@@ -20,22 +18,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class ProgPOETest {
     
     public ProgPOETest() {
-    }
-
-    @org.junit.jupiter.api.BeforeAll
-    public static void setUpClass() throws Exception {
-    }
-
-    @org.junit.jupiter.api.AfterAll
-    public static void tearDownClass() throws Exception {
-    }
-
-    @org.junit.jupiter.api.BeforeEach
-    public void setUp() throws Exception {
-    }
-
-    @org.junit.jupiter.api.AfterEach
-    public void tearDown() throws Exception {
     }
     
     @BeforeAll
@@ -57,7 +39,7 @@ public class ProgPOETest {
     /**
      * Test of main method, of class ProgPOE.
      */
-    @org.junit.jupiter.api.Test
+    @Test
     public void testMain() {
         System.out.println("main");
         String[] args = null;

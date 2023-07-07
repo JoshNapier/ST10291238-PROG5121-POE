@@ -6,6 +6,7 @@ package progpoe;
 
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -14,6 +15,12 @@ import javax.swing.JOptionPane;
  */
 public class AddTask {
 
+    private static List<String> developers = new ArrayList<>();
+    private static List<String> taskNames = new ArrayList<>();
+    private static List<String> taskIDs = new ArrayList<>();
+    private static List<Double> taskDurations = new ArrayList<>();
+    private static List<String> taskStatuses = new ArrayList<>();
+    
     Scanner scanner = new Scanner(System.in);
 
     private User user;
@@ -21,7 +28,6 @@ public class AddTask {
 
     private int totalHours;
 
-    private static final String[] TASK_STATUSES = {"To Do", "Done", "Doing"};
 
     public AddTask(ArrayList<Task> tasks, User user) {
         this.user = user;
@@ -34,12 +40,14 @@ public class AddTask {
 
             System.out.println("Enter task name: ");
             String taskName = scanner.nextLine();
+            taskNames.add(taskName);
 
             System.out.println("Enter task description (max 50 characters): ");
             String taskDescr = scanner.nextLine();
 
             System.out.println("Enter task duration in hours: ");
             double taskDuration = Double.parseDouble(scanner.nextLine());
+            taskDurations.add(taskDuration);
 
             if (taskDescr.length() > 50) {
                 System.out.println("Please enter a task description of less than 50 characters");
@@ -48,6 +56,7 @@ public class AddTask {
             }
 
             String taskID = generateTaskID(taskName, i, user.getSurname());
+            taskIDs.add(taskID);
 
             String taskStatus = selectTaskStatus();
 
@@ -59,6 +68,8 @@ public class AddTask {
                     + "Task ID: " + taskID + "\n"
                     + "Duration: " + taskDuration + " hours";
             JOptionPane.showMessageDialog(null, taskDetails);
+            
+            developers.add(user.getFirstName() + " " + user.getSurname());
 
             totalHours += taskDuration;
         }
@@ -74,54 +85,57 @@ public class AddTask {
         return taskID;
     }
 
-//    private String selectTaskStatus() {
-//        System.out.println("Select Task Status:\n"
-//                + "1) To Do\n"
-//                + "2) Done\n"
-//                + "3) Doing\n"
-//                + "Enter status number: ");
-//        int statusIndex = scanner.nextInt();
-//        
-//        switch (statusIndex) {
-//            case 1:
-//                return TASK_STATUSES[statusIndex - 1];
-//            case 2:
-//                return TASK_STATUSES[statusIndex - 1];
-//            case 3:
-//                return TASK_STATUSES[statusIndex - 1];
-//            default:
-//                System.out.println("Invalid choice.");
-//                break;
-//        }
-//        return null;
-//        
-//    }
-    
     private String selectTaskStatus() {
-    System.out.println("Select Task Status:");
-    System.out.println("1) To Do");
-    System.out.println("2) Done");
-    System.out.println("3) Doing");
-    System.out.print("Enter status number or phrase (lower case): \n");
+        System.out.println("Select Task Status:");
+        System.out.println("1) To Do");
+        System.out.println("2) Done");
+        System.out.println("3) Doing");
+        System.out.print("Enter status number or phrase (lower case): \n");
 
-    String status = scanner.nextLine().trim().toLowerCase();
+        String status = scanner.nextLine().trim().toLowerCase();
 
-    switch (status) {
-        case "1":
-        case "to do":
-            return "To Do";
-        case "2":
-        case "done":
-            return "Done";
-        case "3":
-        case "doing":
-            return "Doing";
-        default:
-            System.out.println("Invalid status. Defaulting to 'To Do'.");
-            return "To Do";
+        switch (status) {
+            case "1", "to do" -> {
+                taskStatuses.add("To Do");
+                return "To Do";
+            }
+            case "2", "done" -> {
+                taskStatuses.add("Done");
+                return "Done";
+            }
+            case "3", "doing" -> {
+                taskStatuses.add("Doing");
+                return "Doing";
+            }
+            default -> {
+                System.out.println("Invalid status. Defaulting to 'To Do'.");
+                taskStatuses.add("To Do");
+                return "To Do";
+            }
+        }
+
     }
-}
 
+    public static List<String> getDevelopers() {
+        return developers;
+    }
+
+    public static List<String> getTaskNames() {
+        return taskNames;
+    }
+
+    public static List<String> getTaskIDs() {
+        return taskIDs;
+    }
+
+    public static List<Double> getTaskDurations() {
+        return taskDurations;
+    }
+
+    public static List<String> getTaskStatuses() {
+        return taskStatuses;
+    }
+    
 }
 
 
